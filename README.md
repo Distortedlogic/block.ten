@@ -15,4 +15,6 @@ go to https://block-ten.vercel.app
 clone repo
 cd into root
 
+Note: port maps to 3000, also has labels for traefik at block.ten.localhost
+
     docker-compose up --build
