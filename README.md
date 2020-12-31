@@ -1,23 +1,18 @@
-# Example app with [chakra-ui](https://github.com/chakra-ui/chakra-ui)
+# MVP of Block.ten
 
-This example features how to use [chakra-ui](https://github.com/chakra-ui/chakra-ui) as the component library within a Next.js app.
+Elegantly simple web frontend to view the latest 10 blocks of the EOS Blockchain
 
-We are connecting the Next.js `_app.js` with `chakra-ui`'s Theme and ColorMode containers so the pages can have app-wide dark/light mode. We are also creating some components which shows the usage of `chakra-ui`'s style props.
+## Non-Devs
 
-## Deploy your own
+go to https://block-ten.vercel.app
 
-Deploy the example using [Vercel](https://vercel.com):
+## Quick start
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/vercel/next.js/tree/canary/examples/with-chakra-ui)
+    docker run -p 3000:3000 distortedlogic/block.ten:latest
 
-## How to use
+## Local Build
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+clone repo
+cd into root
 
-```bash
-npx create-next-app --example with-chakra-ui with-chakra-ui-app
-# or
-yarn create next-app --example with-chakra-ui with-chakra-ui-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+    docker-compose up --build

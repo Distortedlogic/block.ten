@@ -1,20 +1,50 @@
 {
-  "name": "with-chakra-ui",
+  "name": "block.ten",
   "version": "0.1.0",
   "scripts": {
-    "dev": "next dev",
+    "dev": "nodemon --exec ts-node src/proxyServer.ts",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.0",
     "@chakra-ui/react": "^1.0.0",
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",
-    "framer-motion": "^2.9.4",
+    "dayjs": "^1.9.8",
+    "easy-peasy": "^4.0.1",
+    "eosjs": "^21.0.3",
+    "express": "^4.17.1",
+    "framer-motion": "^3.1.1",
+    "http-proxy-middleware": "^1.0.6",
     "next": "latest",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-cookie-consent": "^6.2.1",
+    "react-dom": "^17.0.1",
+    "react-loading-skeleton": "^2.1.1",
+    "use-async-effect": "^2.2.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.12.12",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "@testing-library/jest-dom": "^5.11.6",
+    "@testing-library/react": "^11.2.2",
+    "@types/express": "^4.17.9",
+    "@types/jest": "^26.0.19",
+    "@types/node": "^14.14.14",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-test-renderer": "^17.0.0",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.6",
+    "react-test-renderer": "^17.0.1",
+    "regenerator-runtime": "^0.13.7",
+    "ts-jest": "^26.4.4",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  }
 }

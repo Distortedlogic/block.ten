@@ -1,0 +1,46 @@
+version: 2.1
+jobs:
+  build-and-deploy:
+    docker:
+      - image: node:latest
+    working_directory: ~/Block.ten
+    steps:
+      - checkout:
+          path: ~/Block.ten
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{checksum "package.json"}}
+            - v1-dependencies-
+      - run: npm i
+      - run: npm i -g vercel@latest
+      - save_cache:
+          paths:
+            - node_modules
+            - ./.next/cache
+          key: v1-dependencies-{{checksum "package.json"}}
+      - run: npm run test
+      - run: npm run build
+      - setup_remote_docker:
+          docker_layer_caching: false
+      - run:
+          name: Install Docker Client
+          command: |
+            set -x
+            VER="18.06.3-ce"
+            curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
+            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
+            mv /tmp/docker/* /usr/bin
+      - run:
+          name: Build Backend Docker Image
+          command: docker build -f Dockerfile.prod -t distortedlogic/block.ten:latest .
+      - run: docker login -u distortedlogic -p $DOCKERHUB_TOKEN
+      - run: docker push distortedlogic/block.ten:latest
+      - run: vercel --prod --token $VERCEL_TOKEN --confirm
+workflows:
+  build:
+    jobs:
+      - build-and-deploy:
+          filters:
+            branches:
+              only:
+                - master

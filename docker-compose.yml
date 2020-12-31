@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  block.ten:
+    image: distortedlogic/block.ten:development
+    container_name: block.ten
+    restart: on-failure
+    build:
+      context: .
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.frontend.rule=Host(`block.ten.localhost`)
+      - traefik.http.routers.frontend.entrypoints=unsecure
+      - traefik.http.services.frontend.loadbalancer.server.port=3000
+    volumes:
+      - .:/app
+    ports:
+      - 3001:3000
+    environment:
+      - NODE_ENV=development
+    stdin_open: true
