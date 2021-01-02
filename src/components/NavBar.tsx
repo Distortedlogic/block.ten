@@ -36,7 +36,7 @@ export const NavBar: React.FC<NavBarProps> = () => {
       <Flex justifyContent="space-between" alignItems="center">
         <Link
           mr={6}
-          href="https://ionomy.com/en/markets/btc-eos"
+          href="https://bittrex.com/Market/Index?MarketName=USD-EOS"
           target="_blank"
           variant="unstyled"
         >
