@@ -22,15 +22,6 @@ dayjs.tz.guess();
 dayjs.tz.setDefault("America/New_York");
 dayjs.extend(LocalizedFormat);
 
-// typescript did not pick up JsonRpc for auto import
-// JSONrpc end point returning transactions property which is not on GetBlockResult
-// transactions are annoying with out typescript
-// Could not find block is common
-// Method to stream blocks?
-// for (await block of rpc.stream()){
-// Do stuff with block
-// }
-
 interface indexProps {}
 
 const Index: React.FC<indexProps> = () => {
