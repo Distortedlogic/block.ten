@@ -16,7 +16,6 @@ export const useEosPrice = () => {
       const jsonPriceData = await rawPriceData.json();
       setEosPrice(jsonPriceData.USD);
     },
-    () => {},
     [refreshDep, eosPrice, setEosPrice]
   );
   return eosPrice;
