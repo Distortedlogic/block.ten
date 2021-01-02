@@ -1,6 +1,7 @@
 # MVP of Block.ten
 
 Elegantly simple web frontend to view the latest 10 blocks of the EOS Blockchain, plus price.
+Using Next.js, React, easy-peasy (Redux) with typed hooks, Chakra-ui.
 
 ## Non-Devs
 
