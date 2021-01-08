@@ -14,8 +14,10 @@ go to https://block-ten.vercel.app
 ## Local Build
 
 clone repo
+
 cd into root
 
+    npm install
     docker-compose up --build
 
 navigate to localhost:3000
@@ -29,10 +31,9 @@ Note: labels for traefik at block.ten.localhost
 - Could not find block is common on top block
 - Method to stream blocks?
 
-    for (await block of rpc.stream()){
-        Do stuff with block
-    }
-
+  for (await block of rpc.stream()){
+  Do stuff with block
+  }
 
 ## Run Tests
 
