@@ -15,7 +15,6 @@ import utc from "dayjs/plugin/utc";
 import React, { Fragment, useState } from "react";
 import { RawModal } from "../components/RawModal";
 import { useTenBlocks } from "../hooks/useTenBlocks";
-import { countBlockActions } from "../utils/countBlockActions";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.guess();
@@ -42,9 +41,22 @@ const Index: React.FC<indexProps> = () => {
         <Text textAlign="center">Block Number</Text>
         <Text textAlign="center">Producer</Text>
         <Text textAlign="center"># Transactions</Text>
-        <Text textAlign="center"># Actions</Text>
+        <Text textAlign="center">Confirmed number</Text>
       </Grid>
     );
+    Array.from(Array(tenBlocks.length).keys()).map(() =>
+      tenBlocks.map((block, idx) => {
+        if (
+          !(idx === tenBlocks.length - 1) &&
+          block.id < tenBlocks[idx + 1].id
+        ) {
+          const temp = block;
+          block = tenBlocks[idx + 1];
+          tenBlocks[idx + 1] = temp;
+        }
+      })
+    );
+
     const stackItems =
       tenBlocks.length !== 0
         ? tenBlocks.map((block, idx) => (
@@ -82,11 +94,7 @@ const Index: React.FC<indexProps> = () => {
                         ? (block as any).transactions.length
                         : 0}
                     </Text>
-                    <Text textAlign="center">
-                      {(block as any).transactions
-                        ? countBlockActions(block)
-                        : 0}
-                    </Text>
+                    <Text textAlign="center">{block.confirmed}</Text>
                   </Grid>
                 </Box>
               </Tooltip>
